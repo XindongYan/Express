@@ -1,0 +1,38 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+hr {
+  border: 0.7px solid #cccccc
+}
+
+form {
+  text-align: center;
+  margin-top: 70px;
+}
+
+input {
+  height: 30px;
+  border-radius: 6px;
+  border: 0.7px solid #ccc;
+}
+
+.sub {
+  height: 30px;
+  width: 50px;
+  background: #00B7FF;
+  border: 1px solid #00B7FF;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+ul {
+  color: #666666;
+  font-family: '微软雅黑';
+  list-style-type:none;
+}
