@@ -6,11 +6,12 @@ exports.article = async (req, res) => {
     if (text == '')
         return res.render('error', { message: '400', error: '不可为空' })
 
-    var day = new Date().getDate()
-    var mon = new Date().getMonth()
-    var hours = new Date().getHours()
-    var min = new Date().getMinutes()
-    var year = new Date().getFullYear()
+    var date = new Date();
+    var day = date.getDate()
+    var mon = date.getMonth()
+    var hours = date.getHours()
+    var min = date.getMinutes()
+    var year = date.getFullYear()
 
     let data = {
         time: new Date(),
@@ -20,14 +21,12 @@ exports.article = async (req, res) => {
 
     console.log(data)
 
-    var result = await db.Article.create(data)
-    if (!result) {
-        return res.render('index', {error: '上传失败'});
-    }
+    var create = db.Article.create(data);
+    var task = db.Article.find({}).sort({time: -1})
 
-    var task = await db.Article.find({}).sort({time: -1})
-    if (!task) {
+    var result = await Promise.all([create, task])
+    if (!result) {
         return res.render('index', { error: '数据获取失败' })
     }
-    return res.render('index', {topic:task});
+    return res.render('index', {topic:result[1]});
 }
