@@ -5,36 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <% if(typeof(error) != 'undefined' && error) { %>
-        <div class="alterError">
-            <%= error  %>
-        </div>
-    <% } %>
-    <% if(typeof(success) != 'undefined' && success) { %>
-        <div class="alterOK">
-            <%= success  %>
-        </div>
-    <% } %>
+
     <h1>Express</h1>
     
     <hr>
 
-    <%- partial('./form')  %>
-    
-    <%- partial('./list', topic) %>
+    <div id="app">
+        <%- partial('./form')  %>
 
-    <!-- <script>
-        var ul = document.getElementById('ul')
-        sub.click = (callback) =>{
-            setTimeout(() => {
-                ul
-                callback();
-            })
-        }
-    </script> -->
+        <% if (typeof(error) !== 'undefined' && error) { %>
+            <%= error %>
+        <% } else { %>
+            <%- partial('./list', topic) %>
+        <% } %>
+    </div>
+    
+
+    <script>
+        // var ul = document.getElementById('ul')
+        // sub.click = (callback) =>{
+        //     setTimeout(() => {
+        //         ul
+        //         callback();
+        //     })
+        // }
+    </script>
 
 </body>
 </html>
