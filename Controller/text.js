@@ -18,7 +18,7 @@ exports.article = async (req, res) => {
 
     if (text == '')
         // return res.render('error', { message: 400, error: '不可为空' })
-        return res.render('index', { error: '不可为空' });
+        return res.render('index', { error: '不可为空，重新上传' });
 
     let data = {
         time: new Date(),

@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../stylesheets/style.css">
-    <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
-    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
-    <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+    <script src="jquery.js"></script>
+    <script src="jquery.pagination.js"></script>
+    <link rel="stylesheet" type="text/css" href="../pagination/common/reset.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../pagination/common/highlight.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../pagination/common/common.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../pagination/pagination.css" media="screen">
     <title>Document</title>
 </head>
+
 <body>
 
     <h1>Express</h1>
-    
+
     <hr>
 
     <div id="app">
@@ -21,21 +26,12 @@
 
         <% if (typeof(error) !== 'undefined' && error) { %>
             <%= error %>
-        <% } else { %>
+         <% } else { %>
             <%- partial('./list', topic) %>
-        <% } %>
+        <% } %>        
     </div>
-    
 
-    <script>
-        // var ul = document.getElementById('ul')
-        // sub.click = (callback) =>{
-        //     setTimeout(() => {
-        //         ul
-        //         callback();
-        //     })
-        // }
-    </script>
 
 </body>
+
 </html>
