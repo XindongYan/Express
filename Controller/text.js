@@ -1,7 +1,9 @@
 var db = require('../models/text.mongo')
 
 exports.article = async (req, res) => {
-    let text = req.body.text;
+    var text = req.body.text;
+    var pageSize = req.body.pageSize;
+    var current = req.body.current;
 
     var date = new Date();
     var day = date.getDate()
@@ -22,18 +24,23 @@ exports.article = async (req, res) => {
 
     let data = {
         time: new Date(),
-        create_time: year + '年' + mon + '月' + day + '日' + ' ' + hours + '时' + ':' + min + '分',
+        create_time: year + '年' + mon + '月' + day + '日' + ' ' + hours + ':' + min,
         text: text
     };
 
     console.log(data)
 
     var create = db.Article.create(data);
-    var task = db.Article.find({}).sort({ time: -1 });
+    var count = db.Article.find({}).count().exec()
 
-    var result = await Promise.all([create, task]);
+    var result = await Promise.all([create, count]);
     if (!result) {
-        return res.render('index', { error: '数据获取失败' });
+        return res.render('index', { error: '数据上传失败' });
     }
-    return res.render('index', { topic: result[1] });
+
+    pageSize || (pageSize = result[1]);
+    current || (current = 1);
+
+    var task = await db.Article.find({}).sort({ time: -1 }).skip(pageSize*(current - 1)).limit(pageSize);
+    return res.render('index', { topic: task });
 }
