@@ -23,6 +23,7 @@ exports.article = async (req, res) => {
         return res.render('index', { error: '不可为空，重新上传' });
 
     let data = {
+        ip: req.header('x-forwarded-for') || req.connection.remoteAddress,
         time: new Date(),
         create_time: year + '年' + mon + '月' + day + '日' + ' ' + hours + ':' + min,
         text: text

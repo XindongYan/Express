@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var text = require('../Controller/text')
+var text = require('../Controller/text.controller')
 var db = require('../models/text.mongo')
 
 /* GET home page. */
